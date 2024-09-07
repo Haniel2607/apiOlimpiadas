@@ -11,6 +11,8 @@ use App\Models\Medalhas;
 
 class MedalhasController extends Controller
 {
+    //Crud -> Read(leitura) Select/Visualizar
+    //Mostrar todos os registros da tabela livros
     public function index(){
         $regMedalha = Medalhas::All();
         $contador = $regMedalha->count();
@@ -18,6 +20,8 @@ class MedalhasController extends Controller
         return 'Medalhas: '.$contador.$regMedalha.Response()->json([],Response::HTTP_NO_CONTENT);
     }
 
+    //Crud -> Read(leitura) Select/Visualizar
+    //Mostrar um tipo de registro especifico
     public function show(string $id){ 
         $regMedalha = Medalhas::find($id);
 
@@ -28,6 +32,8 @@ class MedalhasController extends Controller
         }
     }
 
+    //Cadastrar registros
+    //Crud -> Create(criar/cadastrar)
     public function store(Request $request){
         $regMedalha = $request->All();
 
@@ -41,7 +47,7 @@ class MedalhasController extends Controller
             return 'Registros Invalidos: '.Response()->json([],Response::HTTP_NO_CONTENT);
 
         }
-        $regMedalhaCad = Atletas::create($regMedalha);
+        $regMedalhaCad = Medalhas::create($regMedalha);
 
         if( $regMedalhaCad){
             return 'Medalhas registrados:'.Response()->json([],Response::HTTP_NO_CONTENT);
@@ -85,7 +91,7 @@ class MedalhasController extends Controller
     //Crud -> delete(apagar)
     public function destroy(string $id){
 
-        $regMedalha = Atletas::Find($id);
+        $regMedalha = Medalhas::Find($id);
     
         if($regMedalha->delete()){   
         return "Os dados relacionados a medalhas foram deletados com sucesso".response()->json([],Response::HTTP_NO_CONTENT);

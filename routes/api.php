@@ -9,14 +9,29 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+
 Route::get('/',function(){return response()->json(['Sucesso'=>true]);});
 
-Route::get('/livros',[TbllivrosController::class,'index']);
+Route::get('/atletas',[AtletasController::class,'index']);
 
-Route::get('/livros/{codigo}',[TbllivrosController::class,'show']);
+Route::get('/atletas/{idAtleta}',[AtletasController::class,'show']);
 
-Route::post('/livros',[TbllivrosController::class,'store']);
+Route::post('/atletas',[AtletasController::class,'store']);
 
-Route::put('/livros/{codigo}',[TbllivrosController::class,'update']);
+Route::put('/atletas/{idAtleta}',[AtletasController::class,'update']);
 
-Route::delete('/livros/{id}',[TbllivrosController::class,'destroy']);
+Route::delete('/atletas/{idAtleta}',[AtletasController::class,'destroy']);
+
+
+
+Route::get('/',function(){return response()->json(['Sucesso'=>true]);});
+
+Route::get('/medalhas',[MedalhasController::class,'index']);
+
+Route::get('/medalhas/{idMedalha}',[MedalhasController::class,'show']);
+
+Route::post('/medalhas',[MedalhasController::class,'store']);
+
+Route::put('/medalhas/{idMedalha}',[MedalhasController::class,'update']);
+
+Route::delete('/medalhas/{idMedalha}',[MedalhasController::class,'destroy']);
